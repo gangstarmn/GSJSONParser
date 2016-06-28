@@ -7,6 +7,7 @@
 //
 
 #import "GSJSONType.h"
+#import <GSLog/GSLog.h>
 
 @implementation GSJSONType
 

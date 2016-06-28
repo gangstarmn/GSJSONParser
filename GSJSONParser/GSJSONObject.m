@@ -7,6 +7,8 @@
 //
 
 #import "GSJSONObject.h"
+#import <GSLog/GSLog.h>
+
 @implementation GSJSONObject
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {

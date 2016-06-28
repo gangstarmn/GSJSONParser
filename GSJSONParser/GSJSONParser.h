@@ -7,5 +7,4 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <GSLog/GSLog.h>
 #import "GSJSONObject.h"
