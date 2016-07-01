@@ -14,6 +14,10 @@
 		6D295E8B1D226866005A5421 /* GSJSONObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D295E851D226866005A5421 /* GSJSONObject.m */; };
 		6D295E8C1D226866005A5421 /* GSJSONType.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D295E861D226866005A5421 /* GSJSONType.h */; };
 		6D295E8D1D226866005A5421 /* GSJSONType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D295E871D226866005A5421 /* GSJSONType.m */; };
+		6DFEF1551D260964004C3F68 /* NSMutableArray+GSExtention.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFEF1511D260964004C3F68 /* NSMutableArray+GSExtention.h */; };
+		6DFEF1561D260964004C3F68 /* NSMutableArray+GSExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEF1521D260964004C3F68 /* NSMutableArray+GSExtention.m */; };
+		6DFEF1571D260964004C3F68 /* NSMutableDictionary+GSExtention.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFEF1531D260964004C3F68 /* NSMutableDictionary+GSExtention.h */; };
+		6DFEF1581D260964004C3F68 /* NSMutableDictionary+GSExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEF1541D260964004C3F68 /* NSMutableDictionary+GSExtention.m */; };
 		EA0F0B823E1F37FB7152947E /* libPods-GSJSONParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B655ADF0D55DCF0A701B27D /* libPods-GSJSONParser.a */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +32,10 @@
 		6D295E851D226866005A5421 /* GSJSONObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSJSONObject.m; sourceTree = "<group>"; };
 		6D295E861D226866005A5421 /* GSJSONType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSJSONType.h; sourceTree = "<group>"; };
 		6D295E871D226866005A5421 /* GSJSONType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSJSONType.m; sourceTree = "<group>"; };
+		6DFEF1511D260964004C3F68 /* NSMutableArray+GSExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+GSExtention.h"; sourceTree = "<group>"; };
+		6DFEF1521D260964004C3F68 /* NSMutableArray+GSExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+GSExtention.m"; sourceTree = "<group>"; };
+		6DFEF1531D260964004C3F68 /* NSMutableDictionary+GSExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+GSExtention.h"; sourceTree = "<group>"; };
+		6DFEF1541D260964004C3F68 /* NSMutableDictionary+GSExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+GSExtention.m"; sourceTree = "<group>"; };
 		8B655ADF0D55DCF0A701B27D /* libPods-GSJSONParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GSJSONParser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD984CC8074423AB7834EEF0 /* Pods-GSJSONParser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GSJSONParser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GSJSONParser/Pods-GSJSONParser.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +81,10 @@
 		6D295E791D2267EE005A5421 /* GSJSONParser */ = {
 			isa = PBXGroup;
 			children = (
+				6DFEF1511D260964004C3F68 /* NSMutableArray+GSExtention.h */,
+				6DFEF1521D260964004C3F68 /* NSMutableArray+GSExtention.m */,
+				6DFEF1531D260964004C3F68 /* NSMutableDictionary+GSExtention.h */,
+				6DFEF1541D260964004C3F68 /* NSMutableDictionary+GSExtention.m */,
 				6D295E821D226866005A5421 /* GSJSONElement.h */,
 				6D295E831D226866005A5421 /* GSJSONElement.m */,
 				6D295E841D226866005A5421 /* GSJSONObject.h */,
@@ -102,7 +114,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D295E8C1D226866005A5421 /* GSJSONType.h in Headers */,
+				6DFEF1571D260964004C3F68 /* NSMutableDictionary+GSExtention.h in Headers */,
 				6D295E8A1D226866005A5421 /* GSJSONObject.h in Headers */,
+				6DFEF1551D260964004C3F68 /* NSMutableArray+GSExtention.h in Headers */,
 				6D295E7B1D2267EE005A5421 /* GSJSONParser.h in Headers */,
 				6D295E881D226866005A5421 /* GSJSONElement.h in Headers */,
 			);
@@ -210,6 +224,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DFEF1581D260964004C3F68 /* NSMutableDictionary+GSExtention.m in Sources */,
+				6DFEF1561D260964004C3F68 /* NSMutableArray+GSExtention.m in Sources */,
 				6D295E8D1D226866005A5421 /* GSJSONType.m in Sources */,
 				6D295E8B1D226866005A5421 /* GSJSONObject.m in Sources */,
 				6D295E891D226866005A5421 /* GSJSONElement.m in Sources */,
