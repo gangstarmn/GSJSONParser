@@ -11,7 +11,7 @@
 
 @implementation NSMutableArray (GSExtention)
 
-- (void)removeAllNull {
+- (void) removeAllNull {
     for (NSUInteger i = 0; i < [self count]; i ++) {
         id object = [self objectAtIndex:i];
         if ([object isKindOfClass:[NSDictionary class]]) {

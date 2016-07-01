@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSMutableArray (GSExtention)
-- (void)removeAllNull ;
+- (void) removeAllNull;
 @end
