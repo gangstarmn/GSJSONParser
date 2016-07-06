@@ -23,7 +23,7 @@
             id value = [dictionary objectForKey:element.keyForJSON];
             if (value) {
                 if (element.type.elementType == GSJSONElementTypeInt || element.type.elementType == GSJSONElementTypeBoolean || element.type.elementType == GSJSONElementTypeDouble || element.type.elementType == GSJSONElementTypeFloat) {
-                    if ([value isKindOfClass:[NSNumber class]]) {
+                    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]) {
                         [self setValue:value forKey:element.keyForObject];
                     }
                     else {
