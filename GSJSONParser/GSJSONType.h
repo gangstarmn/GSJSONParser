@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger, GSJSONElementType) {
     GSJSONElementTypeString,
     GSJSONElementTypeArray,
     GSJSONElementTypeDictionary,
+    GSJSONElementTypeDictionaryDictionary,
     GSJSONElementTypeObject,
 
 };
@@ -31,5 +32,6 @@ typedef NS_ENUM(NSInteger, GSJSONElementType) {
 
 + (GSJSONType *)dictionary;
 + (GSJSONType *)dictionaryWithClass:(Class )class;
++ (GSJSONType *)dictionaryDictionaryWithClass:(Class )class;
 
 @end

@@ -34,7 +34,6 @@
 }
 
 + (GSJSONType *)arrayWithClass:(Class )class{
-    [GSJSONType class];
     GSJSONType *jsonType = [GSJSONType new];
     jsonType.elementType = GSJSONElementTypeArray;
     jsonType.objectClass = class;
@@ -46,11 +45,15 @@
 }
 
 + (GSJSONType *)dictionaryWithClass:(Class )class{
-    [GSJSONType class];
     GSJSONType *jsonType = [GSJSONType new];
     jsonType.elementType = GSJSONElementTypeDictionary;
     jsonType.objectClass = class;
     return jsonType;
 }
-
++ (GSJSONType *)dictionaryDictionaryWithClass:(Class )class {
+    GSJSONType *jsonType = [GSJSONType new];
+    jsonType.elementType = GSJSONElementTypeDictionaryDictionary;
+    jsonType.objectClass = class;
+    return jsonType;
+}
 @end
