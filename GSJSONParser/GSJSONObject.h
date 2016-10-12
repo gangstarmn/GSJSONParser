@@ -13,4 +13,6 @@
 
 - (id) initWithDictionary:(NSDictionary *)dictionary ;
 - (NSArray <GSJSONElement *> *) elementArray ;
+
+- (NSDictionary *)dictionaryValue;
 @end

@@ -169,7 +169,122 @@
         ATLog(@"%@ key is Not Defined in %@", key, [self class]);
     }
 }
+
+- (id) getSafeValueForKey:(NSString *)key{
+    if ([self respondsToSelector:NSSelectorFromString(key)]) {
+        return [self valueForKey:key];
+//        [self setValue:value forKey:key];
+    }
+    else {
+        ATLog(@"%@ key is Not Defined in %@", key, [self class]);
+    }
+    return nil;
+}
 - (NSMutableArray <GSJSONElement *> *) elementArray  {
     return [NSMutableArray array];
 }
+
+- (NSDictionary *)dictionaryValue {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    NSArray *elementArray = [self elementArray];
+    if ([elementArray count] == 0) {
+        ATLogWarning(@"Element Array not defined");
+    }
+    for (GSJSONElement *element in elementArray) {
+        id value = [self getSafeValueForKey:element.keyForObject];
+        if (value) {
+            if (element.type.elementType == GSJSONElementTypeInt) {
+                int number = (int ) value;
+                [dictionary setObject:[NSNumber numberWithInt:number] forKey:element.keyForJSON];
+            }
+            else if (element.type.elementType == GSJSONElementTypeBoolean) {
+                BOOL number = (BOOL ) value;
+                [dictionary setObject:[NSNumber numberWithBool:number] forKey:element.keyForJSON];
+            }
+            else if (element.type.elementType == GSJSONElementTypeDouble) {
+                //double number = (double ) value;
+                //[dictionary setObject:[NSNumber numberWithDouble:number] forKey:element.keyForJSON];
+            }
+            else if (element.type.elementType == GSJSONElementTypeFloat) {
+//                float number = (float ) value;
+//                [dictionary setObject:[NSNumber numberWithFloat:number] forKey:element.keyForJSON];
+            }
+            else if (element.type.elementType == GSJSONElementTypeString) {
+                NSString *string = (NSString *) value;
+                [dictionary setObject:string forKey:element.keyForJSON];
+            }
+            else if (element.type.elementType == GSJSONElementTypeArray) {
+                if (element.type.objectClass) {
+                    NSArray <GSJSONObject *> *array = (NSArray *)value;
+
+                    NSMutableArray <NSDictionary *> *tempArray = [NSMutableArray array];
+                    for (GSJSONObject *object in array) {
+                        [tempArray addObject:[object dictionaryValue]];
+                    }
+                    [dictionary setObject:tempArray forKey:element.keyForJSON];
+                }
+                else {
+                    [dictionary setObject:value forKey:element.keyForJSON];
+                }
+            }
+            else if (element.type.elementType == GSJSONElementTypeDictionary) {
+                if (element.type.objectClass) {
+                    NSDictionary<NSString *, GSJSONObject *> *valueDictionary = (NSDictionary<NSString *,GSJSONObject *> *)value;
+
+                    NSMutableDictionary <NSString *, NSDictionary *> *tempDictionary = [NSMutableDictionary dictionary];
+
+                    NSArray <NSString *> *allKeys = [valueDictionary allKeys];
+                    for (NSString *key in allKeys) {
+                        GSJSONObject *object = [valueDictionary objectForKey:key];
+                        [tempDictionary setObject:[object dictionaryValue] forKey:key];
+                    }
+                    [dictionary setObject:tempDictionary forKey:element.keyForJSON];
+                }
+                else {
+                    [dictionary setObject:value forKey:element.keyForJSON];
+                }
+            }
+            else if (element.type.elementType == GSJSONElementTypeDictionaryDictionary) {
+                if (element.type.objectClass) {
+                    NSDictionary <NSString *, NSDictionary <NSString*, GSJSONObject *> *> *valueDictionary = (NSDictionary <NSString *, NSDictionary <NSString*, GSJSONObject *> *> *)value;
+                    
+                    NSMutableDictionary <NSString *, NSDictionary <NSString*, NSDictionary *> *> *tempDictionary = [NSMutableDictionary dictionary];
+
+                    NSArray <NSString *> *allKeys = [valueDictionary allKeys];
+                    for (NSString *key in allKeys) {
+                        NSDictionary <NSString*, GSJSONObject *> *subDictionary = [valueDictionary objectForKey:key];
+                        NSMutableDictionary <NSString*, NSDictionary *> *subTempDictionary = [NSMutableDictionary dictionary];
+                        
+                        NSArray <NSString *> *subAllKeys = [subDictionary allKeys];
+                        
+                        for (NSString *subKey in subAllKeys) {
+                            GSJSONObject *object = [subDictionary objectForKey:subKey];
+                            
+                            [subTempDictionary setObject:[object dictionaryValue] forKey:subKey];
+                        }
+                        
+                        [tempDictionary setObject:subTempDictionary forKey:key];
+                    }
+                    [dictionary setObject:tempDictionary forKey:element.keyForJSON];
+                }
+                else {
+                    [dictionary setObject:value forKey:element.keyForJSON];
+                }
+            }
+            else if (element.type.elementType == GSJSONElementTypeDictionaryDictionary) {
+                if (element.type.objectClass) {
+                    GSJSONObject *object = (GSJSONObject *)value;
+                    [dictionary setObject:object forKey:element.keyForJSON];
+
+                }
+                else {
+                    [dictionary setObject:value forKey:element.keyForJSON];
+                }
+            }
+        }
+    }
+
+    return dictionary;
+}
+
 @end
