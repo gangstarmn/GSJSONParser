@@ -1,6 +1,6 @@
  Pod::Spec.new do |s|
   s.name         = "GSJSONParser"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "GSJSONParser is JSON Object mapper"
   s.description  = <<-DESC
                     JSON object mapper from NSDictionary.

@@ -194,24 +194,23 @@
         id value = [self getSafeValueForKey:element.keyForObject];
         if (value) {
             if (element.type.elementType == GSJSONElementTypeInt) {
-                int number = (int ) value;
-                [dictionary setObject:[NSNumber numberWithInt:number] forKey:element.keyForJSON];
+                [dictionary setObject:value forKey:element.keyForJSON];
             }
             else if (element.type.elementType == GSJSONElementTypeBoolean) {
-                BOOL number = (BOOL ) value;
-                [dictionary setObject:[NSNumber numberWithBool:number] forKey:element.keyForJSON];
+                [dictionary setObject:value forKey:element.keyForJSON];
             }
             else if (element.type.elementType == GSJSONElementTypeDouble) {
-                //double number = (double ) value;
-                //[dictionary setObject:[NSNumber numberWithDouble:number] forKey:element.keyForJSON];
+                [dictionary setObject:value forKey:element.keyForJSON];
             }
             else if (element.type.elementType == GSJSONElementTypeFloat) {
-//                float number = (float ) value;
-//                [dictionary setObject:[NSNumber numberWithFloat:number] forKey:element.keyForJSON];
+                [dictionary setObject:value forKey:element.keyForJSON];
             }
             else if (element.type.elementType == GSJSONElementTypeString) {
-                NSString *string = (NSString *) value;
-                [dictionary setObject:string forKey:element.keyForJSON];
+                [dictionary setObject:value forKey:element.keyForJSON];
+            }
+            else if (element.type.elementType == GSJSONElementTypeObject) {
+                GSJSONObject *object = (GSJSONObject *) value;
+                [dictionary setObject:[object dictionaryValue] forKey:element.keyForJSON];
             }
             else if (element.type.elementType == GSJSONElementTypeArray) {
                 if (element.type.objectClass) {
