@@ -40,6 +40,13 @@
     return jsonType;
 }
 
++ (GSJSONType *)arrayArrayWithClass:(Class )class {
+    GSJSONType *jsonType = [GSJSONType new];
+    jsonType.elementType = GSJSONElementTypeArrayArray;
+    jsonType.objectClass = class;
+    return jsonType;
+}
+
 + (GSJSONType *)dictionary {
     return [GSJSONType dictionaryWithClass:nil];
 }

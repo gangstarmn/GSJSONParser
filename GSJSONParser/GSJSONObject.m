@@ -65,6 +65,37 @@
                         ATLogError(@"%@ is not a NSArray",element.keyForJSON);
                     }
                 }
+                else if (element.type.elementType == GSJSONElementTypeArrayArray) {
+                    if ([value isKindOfClass:[NSArray class]]) {
+                        if (element.type.objectClass) {
+                            if ([[self class] isSubclassOfClass:element.type.objectClass]) {
+                                ATLogError(@"subclass %@",[self class]);
+                            }
+                            if ([element.type.objectClass isSubclassOfClass:[GSJSONObject class]]) {
+                                NSArray <NSArray <NSDictionary *> *> *array = value;
+                                NSMutableArray <NSMutableArray <GSJSONObject *> *> *tempArray = [NSMutableArray array];
+                                for (NSArray <NSDictionary *> *subArray in array) {
+                                    NSMutableArray <GSJSONObject *> *tempRowArray = [NSMutableArray array];
+                                    for (NSDictionary *subDictionary in subArray) {
+                                        GSJSONObject *object = [[element.type.objectClass alloc] initWithDictionary:subDictionary];
+                                        [tempRowArray addObject:object];
+                                    }
+                                    [tempArray addObject:tempRowArray];
+                                }
+                                [self setSafeValue:tempArray forKey:element.keyForObject];
+                            }
+                            else {
+                                ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                            }
+                        }
+                        else {
+                            [self setSafeValue:value forKey:element.keyForObject];
+                        }
+                    }
+                    else {
+                        ATLogError(@"%@ is not a NSArray",element.keyForJSON);
+                    }
+                }
                 else if (element.type.elementType == GSJSONElementTypeDictionary) {
                     if ([value isKindOfClass:[NSDictionary class]]) {
                         if (element.type.objectClass) {
