@@ -6,10 +6,15 @@ PODS:
 DEPENDENCIES:
   - GSLog
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ATLog
+    - GSLog
+
 SPEC CHECKSUMS:
   ATLog: e9c8afd11e4108381fdc862e9ccb793435f8c259
   GSLog: 5038ec3d241c5a08098a1a7a19ed6a545652da4d
 
 PODFILE CHECKSUM: 257f4c826dc4d08cb504251697813692be29325a
 
-COCOAPODS: 1.1.0.rc.3
+COCOAPODS: 1.5.3

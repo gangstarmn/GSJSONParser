@@ -23,3 +23,6 @@
 #define GSDictionay(key,class)            [GSJSONElement elementWithKey:key elementType:[GSJSONType dictionaryWithClass:class]]
 #define GSDictionayDictionay(key,class)   [GSJSONElement elementWithKey:key elementType:[GSJSONType dictionaryDictionaryWithClass:class]]
 #define GSObject(key,class)               [GSJSONElement elementWithKey:key elementType:[GSJSONType simpleTypeWithClass:class]]
+
+#define GSDate(key) [GSJSONElement elementWithKey:key elementType:[GSJSONType date]]
+#define GSDateFormat(key, format) [GSJSONElement elementWithKey:key elementType:[GSJSONType dateWithFormat:format]];

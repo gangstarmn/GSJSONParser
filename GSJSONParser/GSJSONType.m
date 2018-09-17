@@ -11,6 +11,23 @@
 
 @implementation GSJSONType
 
+static NSString *defaultDateFormat = @"yyyy-MM-dd HH:mm:ss";
+
++ (void) setDateDefaultFormat :(NSString *) format {
+    defaultDateFormat = format;
+}
+
++ (GSJSONType *)date {
+    return [GSJSONType dateWithFormat:defaultDateFormat];
+}
+
++ (GSJSONType *)dateWithFormat:(NSString *)dateFormat {
+    GSJSONType *jsonType = [GSJSONType new];
+    jsonType.elementType = GSJSONElementTypeDate;
+    jsonType.dateFormat = dateFormat;
+    return jsonType;
+}
+
 + (GSJSONType *)simpleTypeWithType:(GSJSONElementType )type {
     if (type == GSJSONElementTypeObject) {
         ATLog(@"Don't use this method on GSJSONElementTypeObject type ");

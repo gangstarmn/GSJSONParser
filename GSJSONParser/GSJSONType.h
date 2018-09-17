@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 typedef NS_ENUM(NSInteger, GSJSONElementType) {
+    GSJSONElementTypeDate,
     GSJSONElementTypeInt,
     GSJSONElementTypeBoolean,
     GSJSONElementTypeDouble,
@@ -24,7 +25,11 @@ typedef NS_ENUM(NSInteger, GSJSONElementType) {
 @interface GSJSONType : NSObject
 @property (nonatomic, assign) GSJSONElementType elementType;
 @property (nonatomic, assign) Class objectClass;
+@property (nonatomic, strong) NSString *dateFormat;
 
++ (void) setDateDefaultFormat :(NSString *) format ;
++ (GSJSONType *)date;
++ (GSJSONType *)dateWithFormat:(NSString *)dateFormat;
 + (GSJSONType *)simpleTypeWithType:(GSJSONElementType )type;
 + (GSJSONType *)simpleTypeWithClass:(Class )class ;
 

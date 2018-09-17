@@ -8,6 +8,7 @@
 
 #import "GSJSONObject.h"
 #import <GSLog/GSLog.h>
+#import <UIKit/UIKit.h>
 
 @implementation GSJSONObject
 
@@ -35,6 +36,18 @@
                         [self setSafeValue:value forKey:element.keyForObject];
                     }
                     else {
+                        ATLogError(@"%@ is not a NSString",element.keyForJSON);
+                    }
+                }
+                else if (element.type.elementType == GSJSONElementTypeDate) {
+                    if ([value isKindOfClass:[NSString class]]) {
+                        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                        [dateFormatter setDateFormat:element.type.dateFormat];
+                        NSDate *date = [dateFormatter dateFromString:value];
+                        [self setSafeValue:date forKey:element.keyForObject];
+                    }
+                    else
+                    {
                         ATLogError(@"%@ is not a NSString",element.keyForJSON);
                     }
                 }
@@ -238,6 +251,12 @@
             }
             else if (element.type.elementType == GSJSONElementTypeString) {
                 [dictionary setObject:value forKey:element.keyForJSON];
+            }
+            else if (element.type.elementType == GSJSONElementTypeDate) {
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:element.type.dateFormat];
+                NSString *stringDate = [formatter stringFromDate:value];
+                [dictionary setObject:stringDate forKey:element.keyForJSON];
             }
             else if (element.type.elementType == GSJSONElementTypeObject) {
                 GSJSONObject *object = (GSJSONObject *) value;
