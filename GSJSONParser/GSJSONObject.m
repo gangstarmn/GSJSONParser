@@ -12,11 +12,24 @@
 
 @implementation GSJSONObject
 
+static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tClassElementArray = nil;
+
++ (NSMutableArray <GSJSONElement *> *) elementArrayForClass :(Class )class {
+    if (!tClassElementArray) {
+        tClassElementArray = [NSMutableDictionary dictionary];
+    }
+    NSMutableArray <GSJSONElement *> *eArray = tClassElementArray[NSStringFromClass(class)];
+    if (!eArray) {
+        eArray = [class elementArray];
+        [tClassElementArray setObject:eArray forKey:NSStringFromClass(class)];
+    }
+    return eArray;
+}
+
 - (id) initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
-        
-        NSArray *elementArray = [self elementArray];
+        NSArray <GSJSONElement *> *elementArray = [GSJSONObject elementArrayForClass:self.class];
         if ([elementArray count] == 0) {
             ATLogWarning(@"Element Array not defined");
         }
@@ -224,13 +237,14 @@
     }
     return nil;
 }
-- (NSMutableArray <GSJSONElement *> *) elementArray  {
+
++ (NSMutableArray <GSJSONElement *> *) elementArray  {
     return [NSMutableArray array];
 }
 
 - (NSDictionary *)dictionaryValue {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSArray *elementArray = [self elementArray];
+    NSArray <GSJSONElement *> *elementArray = [GSJSONObject elementArrayForClass:self.class];
     if ([elementArray count] == 0) {
         ATLogWarning(@"Element Array not defined");
     }
@@ -332,7 +346,6 @@
             }
         }
     }
-
     return dictionary;
 }
 

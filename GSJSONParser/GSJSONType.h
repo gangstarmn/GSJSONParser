@@ -10,6 +10,7 @@
 typedef NS_ENUM(NSInteger, GSJSONElementType) {
     GSJSONElementTypeDate,
     GSJSONElementTypeInt,
+    GSJSONElementTypeLong,
     GSJSONElementTypeBoolean,
     GSJSONElementTypeDouble,
     GSJSONElementTypeFloat,

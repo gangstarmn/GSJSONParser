@@ -12,7 +12,6 @@
 @interface GSJSONObject : NSObject
 
 - (id) initWithDictionary:(NSDictionary *)dictionary ;
-- (NSArray <GSJSONElement *> *) elementArray ;
-
++ (NSMutableArray <GSJSONElement *> *) elementArray ;
 - (NSDictionary *)dictionaryValue;
 @end
