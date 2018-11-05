@@ -25,4 +25,4 @@
 #define GSObject(key,class)               [GSJSONElement elementWithKey:key elementType:[GSJSONType simpleTypeWithClass:class]]
 
 #define GSDate(key) [GSJSONElement elementWithKey:key elementType:[GSJSONType date]]
-#define GSDateFormat(key, format) [GSJSONElement elementWithKey:key elementType:[GSJSONType dateWithFormat:format]];
+#define GSDateFormat(key, format) [GSJSONElement elementWithKey:key elementType:[GSJSONType dateWithFormat:format]]
