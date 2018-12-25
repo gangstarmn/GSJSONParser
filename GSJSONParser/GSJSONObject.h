@@ -11,7 +11,9 @@
 
 @interface GSJSONObject : NSObject
 
++ (id) getParsedValue:(id)value element :(GSJSONElement *)element ;
 - (id) initWithDictionary:(NSDictionary *)dictionary ;
 - (nonnull NSMutableArray <GSJSONElement *> *) elementArray ;
 - (nonnull NSDictionary<NSString *, id > *)dictionaryValue;
+
 @end

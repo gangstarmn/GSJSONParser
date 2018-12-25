@@ -70,4 +70,8 @@
     return [GSJSONElement elementWithKey:key elementType:[GSJSONType dateWithFormat:format]];
 }
 
++ (GSJSONElement *) GSID:(NSString *)key {
+    return [GSJSONElement elementWithKey:key elementType:[GSJSONType type]];
+}
+
 @end

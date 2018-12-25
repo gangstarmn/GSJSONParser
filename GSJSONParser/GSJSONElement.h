@@ -30,5 +30,6 @@
 + (GSJSONElement *) GSObject:(NSString *)key class:(Class)class;
 + (GSJSONElement *) GSDate:(NSString *)key class:(Class)class;
 + (GSJSONElement *) GSDateFormat:(NSString *)key format:(NSString *)format;
++ (GSJSONElement *) GSID:(NSString *)key;
 
 @end

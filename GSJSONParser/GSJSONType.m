@@ -17,6 +17,12 @@ static NSString *defaultDateFormat = @"yyyy-MM-dd HH:mm:ss";
     defaultDateFormat = format;
 }
 
++ (GSJSONType *)type {
+    GSJSONType *jsonType = [GSJSONType new];
+    jsonType.elementType = GSJSONElementTypeID;
+    return jsonType;
+}
+
 + (GSJSONType *)date {
     return [GSJSONType dateWithFormat:defaultDateFormat];
 }
@@ -74,6 +80,14 @@ static NSString *defaultDateFormat = @"yyyy-MM-dd HH:mm:ss";
     jsonType.objectClass = class;
     return jsonType;
 }
+
++ (GSJSONType *)dictionaryArrayWithClass:(Class )class {
+    GSJSONType *jsonType = [GSJSONType new];
+    jsonType.elementType = GSJSONElementTypeDictionaryArray;
+    jsonType.objectClass = class;
+    return jsonType;
+}
+
 + (GSJSONType *)dictionaryDictionaryWithClass:(Class )class {
     GSJSONType *jsonType = [GSJSONType new];
     jsonType.elementType = GSJSONElementTypeDictionaryDictionary;

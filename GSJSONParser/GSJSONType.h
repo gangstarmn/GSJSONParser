@@ -18,8 +18,10 @@ typedef NS_ENUM(NSInteger, GSJSONElementType) {
     GSJSONElementTypeArray,
     GSJSONElementTypeArrayArray,
     GSJSONElementTypeDictionary,
+    GSJSONElementTypeDictionaryArray,
     GSJSONElementTypeDictionaryDictionary,
     GSJSONElementTypeObject,
+    GSJSONElementTypeID,
 
 };
 
@@ -29,6 +31,7 @@ typedef NS_ENUM(NSInteger, GSJSONElementType) {
 @property (nonatomic, strong) NSString *dateFormat;
 
 + (void) setDateDefaultFormat :(NSString *) format ;
++ (GSJSONType *)type;
 + (GSJSONType *)date;
 + (GSJSONType *)dateWithFormat:(NSString *)dateFormat;
 + (GSJSONType *)simpleTypeWithType:(GSJSONElementType )type;
@@ -40,6 +43,7 @@ typedef NS_ENUM(NSInteger, GSJSONElementType) {
 
 + (GSJSONType *)dictionary;
 + (GSJSONType *)dictionaryWithClass:(Class )class;
++ (GSJSONType *)dictionaryArrayWithClass:(Class )class;
 + (GSJSONType *)dictionaryDictionaryWithClass:(Class )class;
 
 @end
