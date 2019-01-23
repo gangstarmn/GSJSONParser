@@ -33,7 +33,8 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
     else if (element.type.elementType == GSJSONElementTypeInt ||
              element.type.elementType == GSJSONElementTypeBoolean ||
              element.type.elementType == GSJSONElementTypeDouble ||
-             element.type.elementType == GSJSONElementTypeFloat) {
+             element.type.elementType == GSJSONElementTypeFloat ||
+             element.type.elementType == GSJSONElementTypeLong) {
         if ([value isKindOfClass:[NSNumber class]] ||
             [value isKindOfClass:[NSString class]]) return value;
         else ATLogError(@"%@ is not a NSNumber",element.keyForJSON);
