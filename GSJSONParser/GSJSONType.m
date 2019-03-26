@@ -45,10 +45,10 @@ static NSString *defaultDateFormat = @"yyyy-MM-dd HH:mm:ss";
     return jsonType;
 }
 
-+ (GSJSONType *)simpleTypeWithClass:(Class )class {
++ (GSJSONType *)simpleTypeWithClass:(Class )classN {
     GSJSONType *jsonType = [GSJSONType new];
     jsonType.elementType = GSJSONElementTypeObject;
-    jsonType.objectClass = class;
+    jsonType.objectClass = classN;
     return jsonType;
 }
 
@@ -56,17 +56,17 @@ static NSString *defaultDateFormat = @"yyyy-MM-dd HH:mm:ss";
     return [GSJSONType arrayWithClass:nil];
 }
 
-+ (GSJSONType *)arrayWithClass:(Class )class{
++ (GSJSONType *)arrayWithClass:(Class )classN{
     GSJSONType *jsonType = [GSJSONType new];
     jsonType.elementType = GSJSONElementTypeArray;
-    jsonType.objectClass = class;
+    jsonType.objectClass = classN;
     return jsonType;
 }
 
-+ (GSJSONType *)arrayArrayWithClass:(Class )class {
++ (GSJSONType *)arrayArrayWithClass:(Class )classN {
     GSJSONType *jsonType = [GSJSONType new];
     jsonType.elementType = GSJSONElementTypeArrayArray;
-    jsonType.objectClass = class;
+    jsonType.objectClass = classN;
     return jsonType;
 }
 
@@ -74,24 +74,24 @@ static NSString *defaultDateFormat = @"yyyy-MM-dd HH:mm:ss";
     return [GSJSONType dictionaryWithClass:nil];
 }
 
-+ (GSJSONType *)dictionaryWithClass:(Class )class{
++ (GSJSONType *)dictionaryWithClass:(Class )classN{
     GSJSONType *jsonType = [GSJSONType new];
     jsonType.elementType = GSJSONElementTypeDictionary;
-    jsonType.objectClass = class;
+    jsonType.objectClass = classN;
     return jsonType;
 }
 
-+ (GSJSONType *)dictionaryArrayWithClass:(Class )class {
++ (GSJSONType *)dictionaryArrayWithClass:(Class )classN {
     GSJSONType *jsonType = [GSJSONType new];
     jsonType.elementType = GSJSONElementTypeDictionaryArray;
-    jsonType.objectClass = class;
+    jsonType.objectClass = classN;
     return jsonType;
 }
 
-+ (GSJSONType *)dictionaryDictionaryWithClass:(Class )class {
++ (GSJSONType *)dictionaryDictionaryWithClass:(Class )classN {
     GSJSONType *jsonType = [GSJSONType new];
     jsonType.elementType = GSJSONElementTypeDictionaryDictionary;
-    jsonType.objectClass = class;
+    jsonType.objectClass = classN;
     return jsonType;
 }
 @end

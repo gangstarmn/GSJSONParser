@@ -23,12 +23,12 @@
 + (GSJSONElement *) GSDouble:(NSString *)key;
 + (GSJSONElement *) GSFloat:(NSString *)key;
 + (GSJSONElement *) GSString:(NSString *)key;
-+ (GSJSONElement *) GSArray:(NSString *)key class:(Class)class;
-+ (GSJSONElement *) GSArrayArray:(NSString *)key class:(Class)class;
-+ (GSJSONElement *) GSDictionay:(NSString *)key class:(Class)class;
-+ (GSJSONElement *) GSDictionayDictionay:(NSString *)key class:(Class)class;
-+ (GSJSONElement *) GSObject:(NSString *)key class:(Class)class;
-+ (GSJSONElement *) GSDate:(NSString *)key class:(Class)class;
++ (GSJSONElement *) GSArray:(NSString *)key class:(Class)classN;
++ (GSJSONElement *) GSArrayArray:(NSString *)key class:(Class)classN;
++ (GSJSONElement *) GSDictionay:(NSString *)key class:(Class)classN;
++ (GSJSONElement *) GSDictionayDictionay:(NSString *)key class:(Class)classN;
++ (GSJSONElement *) GSObject:(NSString *)key class:(Class)classN;
++ (GSJSONElement *) GSDate:(NSString *)key class:(Class)classN;
 + (GSJSONElement *) GSDateFormat:(NSString *)key format:(NSString *)format;
 + (GSJSONElement *) GSID:(NSString *)key;
 

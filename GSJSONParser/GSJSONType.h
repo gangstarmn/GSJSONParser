@@ -22,7 +22,6 @@ typedef NS_ENUM(NSInteger, GSJSONElementType) {
     GSJSONElementTypeDictionaryDictionary,
     GSJSONElementTypeObject,
     GSJSONElementTypeID,
-
 };
 
 @interface GSJSONType : NSObject
@@ -35,15 +34,15 @@ typedef NS_ENUM(NSInteger, GSJSONElementType) {
 + (GSJSONType *)date;
 + (GSJSONType *)dateWithFormat:(NSString *)dateFormat;
 + (GSJSONType *)simpleTypeWithType:(GSJSONElementType )type;
-+ (GSJSONType *)simpleTypeWithClass:(Class )class ;
++ (GSJSONType *)simpleTypeWithClass:(Class )classN ;
 
 + (GSJSONType *)array;
-+ (GSJSONType *)arrayWithClass:(Class )class;
-+ (GSJSONType *)arrayArrayWithClass:(Class )class;
++ (GSJSONType *)arrayWithClass:(Class )classN;
++ (GSJSONType *)arrayArrayWithClass:(Class )classN;
 
 + (GSJSONType *)dictionary;
-+ (GSJSONType *)dictionaryWithClass:(Class )class;
-+ (GSJSONType *)dictionaryArrayWithClass:(Class )class;
-+ (GSJSONType *)dictionaryDictionaryWithClass:(Class )class;
++ (GSJSONType *)dictionaryWithClass:(Class )classN;
++ (GSJSONType *)dictionaryArrayWithClass:(Class )classN;
++ (GSJSONType *)dictionaryDictionaryWithClass:(Class )classN;
 
 @end

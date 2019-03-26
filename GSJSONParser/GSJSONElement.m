@@ -42,27 +42,27 @@
     return [GSJSONElement elementWithKey:key elementType:[GSJSONType simpleTypeWithType:GSJSONElementTypeString]];
 }
 
-+ (GSJSONElement *) GSArray:(NSString *)key class:(Class)class {
-    return [GSJSONElement elementWithKey:key elementType:[GSJSONType arrayWithClass:class]];
++ (GSJSONElement *) GSArray:(NSString *)key class:(Class)classN {
+    return [GSJSONElement elementWithKey:key elementType:[GSJSONType arrayWithClass:classN]];
 }
 
-+ (GSJSONElement *) GSArrayArray:(NSString *)key class:(Class)class {
-    return [GSJSONElement elementWithKey:key elementType:[GSJSONType arrayArrayWithClass:class]];
++ (GSJSONElement *) GSArrayArray:(NSString *)key class:(Class)classN {
+    return [GSJSONElement elementWithKey:key elementType:[GSJSONType arrayArrayWithClass:classN]];
 }
 
-+ (GSJSONElement *) GSDictionay:(NSString *)key class:(Class)class {
-    return [GSJSONElement elementWithKey:key elementType:[GSJSONType dictionaryWithClass:class]];
++ (GSJSONElement *) GSDictionay:(NSString *)key class:(Class)classN {
+    return [GSJSONElement elementWithKey:key elementType:[GSJSONType dictionaryWithClass:classN]];
 }
 
-+ (GSJSONElement *) GSDictionayDictionay:(NSString *)key class:(Class)class {
-    return [GSJSONElement elementWithKey:key elementType:[GSJSONType dictionaryDictionaryWithClass:class]];
++ (GSJSONElement *) GSDictionayDictionay:(NSString *)key class:(Class)classN {
+    return [GSJSONElement elementWithKey:key elementType:[GSJSONType dictionaryDictionaryWithClass:classN]];
 }
 
-+ (GSJSONElement *) GSObject:(NSString *)key class:(Class)class {
-    return [GSJSONElement elementWithKey:key elementType:[GSJSONType simpleTypeWithClass:class]];
++ (GSJSONElement *) GSObject:(NSString *)key class:(Class)classN {
+    return [GSJSONElement elementWithKey:key elementType:[GSJSONType simpleTypeWithClass:classN]];
 }
 
-+ (GSJSONElement *) GSDate:(NSString *)key class:(Class)class {
++ (GSJSONElement *) GSDate:(NSString *)key class:(Class)classN {
     return [GSJSONElement elementWithKey:key elementType:[GSJSONType date]];
 }
 
