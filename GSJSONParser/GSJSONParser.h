@@ -28,5 +28,5 @@
 
 #define GSDate(key) [GSJSONElement elementWithKey:key elementType:[GSJSONType date]]
 #define GSDateFormat(key, format) [GSJSONElement elementWithKey:key elementType:[GSJSONType dateWithFormat:format]]
-#define GSDateFormat(key, format, timeZone) [GSJSONElement GSDateFormat:key format:format timeZone:timeZone]
+#define GSDateFormatWithZone(key, format, timeZone) [GSJSONElement GSDateFormat:key format:format timeZone:timeZone]
 #define GSID(key)               [GSJSONElement GSID:key]
