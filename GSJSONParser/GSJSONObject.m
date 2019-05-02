@@ -47,6 +47,10 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
         if ([value isKindOfClass:[NSString class]]) {
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:element.type.dateFormat];
+            if (element.type.timeZone) {
+                NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:element.type.timeZone];
+                [dateFormatter setTimeZone:timeZone];
+            }
             return [dateFormatter dateFromString:value];
         }
         else ATLogError(@"%@ is not a NSString",element.keyForJSON);

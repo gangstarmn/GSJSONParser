@@ -34,6 +34,14 @@ static NSString *defaultDateFormat = @"yyyy-MM-dd HH:mm:ss";
     return jsonType;
 }
 
++ (GSJSONType *)dateWithFormat:(NSString *)dateFormat timeZone:(NSString *)timeZone{
+    GSJSONType *jsonType = [GSJSONType new];
+    jsonType.elementType = GSJSONElementTypeDate;
+    jsonType.dateFormat = dateFormat;
+    jsonType.timeZone = timeZone;
+    return jsonType;
+}
+
 + (GSJSONType *)simpleTypeWithType:(GSJSONElementType )type {
     if (type == GSJSONElementTypeObject) {
         ATLog(@"Don't use this method on GSJSONElementTypeObject type ");

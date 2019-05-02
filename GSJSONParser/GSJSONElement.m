@@ -70,6 +70,10 @@
     return [GSJSONElement elementWithKey:key elementType:[GSJSONType dateWithFormat:format]];
 }
 
++ (GSJSONElement *) GSDateFormat:(NSString *)key format:(NSString *)format timeZone:(NSString *)timeZone {
+    return [GSJSONElement elementWithKey:key elementType:[GSJSONType dateWithFormat:format timeZone:timeZone]];
+}
+
 + (GSJSONElement *) GSID:(NSString *)key {
     return [GSJSONElement elementWithKey:key elementType:[GSJSONType type]];
 }

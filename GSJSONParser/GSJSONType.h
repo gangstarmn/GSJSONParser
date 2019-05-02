@@ -28,11 +28,14 @@ typedef NS_ENUM(NSInteger, GSJSONElementType) {
 @property (nonatomic, assign) GSJSONElementType elementType;
 @property (nonatomic, assign) Class objectClass;
 @property (nonatomic, strong) NSString *dateFormat;
+@property (nonatomic, strong) NSString *timeZone;
 
 + (void) setDateDefaultFormat :(NSString *) format ;
 + (GSJSONType *)type;
 + (GSJSONType *)date;
 + (GSJSONType *)dateWithFormat:(NSString *)dateFormat;
++ (GSJSONType *)dateWithFormat:(NSString *)dateFormat timeZone:(NSString *)timeZone;
+
 + (GSJSONType *)simpleTypeWithType:(GSJSONElementType )type;
 + (GSJSONType *)simpleTypeWithClass:(Class )classN ;
 
