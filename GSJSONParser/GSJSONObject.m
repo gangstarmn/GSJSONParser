@@ -219,11 +219,16 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
 }
 
 - (void) setSafeValue:(id)value forKey:(NSString *)key {
-    if ([self respondsToSelector:NSSelectorFromString(key)]) {
-        [self setValue:value forKey:key];
+    if (value) {
+        if ([self respondsToSelector:NSSelectorFromString(key)]) {
+            [self setValue:value forKey:key];
+        }
+        else {
+            ATLog(@"%@ key is Not Defined in %@", key, [self class]);
+        }
     }
     else {
-        ATLog(@"%@ key is Not Defined in %@", key, [self class]);
+        ATLog(@"the value is null %@ %@", key, [self class]);
     }
 }
 
