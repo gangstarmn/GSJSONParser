@@ -29,4 +29,14 @@
         }
     }
 }
+
+- (void)setSafeObject:(id)anObject forKey:(id<NSCopying>)aKey {
+    if (anObject) {
+        [self setObject:anObject forKey:aKey];
+    }
+    else {
+        [self setObject:[NSNull null] forKey:aKey];
+    }
+}
+
 @end

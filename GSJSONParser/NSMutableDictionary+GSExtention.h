@@ -10,5 +10,8 @@
 
 
 @interface NSMutableDictionary(GSExtention)
+
 - (void)removeAllNull ;
+- (void)setSafeObject:(id)anObject forKey:(id<NSCopying>)aKey ;
+
 @end
