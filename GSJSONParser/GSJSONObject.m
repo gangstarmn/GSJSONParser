@@ -106,8 +106,11 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
                     NSArray <NSString *> *allKeys = [valueDictionary allKeys];
                     NSMutableDictionary<NSString *, GSJSONObject *> *tempDictionary = [NSMutableDictionary dictionary];
                     for (NSString *key in allKeys) {
-                        GSJSONObject *object = [[element.type.objectClass alloc] initWithDictionary:[valueDictionary objectForKey:key]];
-                        [tempDictionary setObject:object forKey:key];
+                        id valueDic = [valueDictionary objectForKey:key];
+                        if ([valueDic isKindOfClass:[NSDictionary class]]) {
+                            GSJSONObject *object = [[element.type.objectClass alloc] initWithDictionary:valueDic];
+                            [tempDictionary setObject:object forKey:key];
+                        }
                     }
                     return tempDictionary;
                 }
@@ -126,12 +129,13 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
                     NSMutableDictionary<NSString *, NSArray <GSJSONObject *>*> *tempDictionary = [NSMutableDictionary dictionary];
                     for (NSString *key in allKeys) {
                         NSArray <NSDictionary *> *dArray = [valueDictionary objectForKey:key];
-                        NSMutableArray <GSJSONObject *> *tempArray = [NSMutableArray array];
-                        
-                        for (NSDictionary *dic in dArray) {
-                            [tempArray addObject:[[element.type.objectClass alloc] initWithDictionary:dic]];
+                        if ([dArray isKindOfClass:[NSArray class]]) {
+                            NSMutableArray <GSJSONObject *> *tempArray = [NSMutableArray array];
+                            for (NSDictionary *dic in dArray) {
+                                [tempArray addObject:[[element.type.objectClass alloc] initWithDictionary:dic]];
+                            }
+                            [tempDictionary setObject:tempArray forKey:key];
                         }
-                        [tempDictionary setObject:tempArray forKey:key];
                     }
                     return tempDictionary;
                 }
