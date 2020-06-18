@@ -1,20 +1,16 @@
 PODS:
-  - ATLog (0.0.2)
-  - GSLog (0.0.2):
-    - ATLog
+  - GSLog (0.0.3)
 
 DEPENDENCIES:
   - GSLog
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - ATLog
+  trunk:
     - GSLog
 
 SPEC CHECKSUMS:
-  ATLog: e9c8afd11e4108381fdc862e9ccb793435f8c259
-  GSLog: 5038ec3d241c5a08098a1a7a19ed6a545652da4d
+  GSLog: 51154e3ead2d9a04a17244894d8624df920042b6
 
 PODFILE CHECKSUM: 257f4c826dc4d08cb504251697813692be29325a
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.3
