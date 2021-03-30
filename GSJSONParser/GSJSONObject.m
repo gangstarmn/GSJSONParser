@@ -62,8 +62,10 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
                     NSArray <NSDictionary *> *array = value;
                     NSMutableArray *tempArray = [NSMutableArray array];
                     for (NSDictionary *subDictionary in array) {
-                        GSJSONObject *object = [[element.type.objectClass alloc] initWithDictionary:subDictionary];
-                        [tempArray addObject:object];
+                        if ([subDictionary isKindOfClass:[NSDictionary class]]) {
+                            GSJSONObject *object = [[element.type.objectClass alloc] initWithDictionary:subDictionary];
+                            [tempArray addObject:object];
+                        }
                     }
                     return tempArray;
                 }
@@ -83,12 +85,16 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
                     NSArray <NSArray <NSDictionary *> *> *array = value;
                     NSMutableArray <NSMutableArray <GSJSONObject *> *> *tempArray = [NSMutableArray array];
                     for (NSArray <NSDictionary *> *subArray in array) {
-                        NSMutableArray <GSJSONObject *> *tempRowArray = [NSMutableArray array];
-                        for (NSDictionary *subDictionary in subArray) {
-                            GSJSONObject *object = [[element.type.objectClass alloc] initWithDictionary:subDictionary];
-                            [tempRowArray addObject:object];
+                        if ([subArray isKindOfClass:[NSArray class]]) {
+                            NSMutableArray <GSJSONObject *> *tempRowArray = [NSMutableArray array];
+                            for (NSDictionary *subDictionary in subArray) {
+                                if ([subDictionary isKindOfClass:[NSDictionary class]]) {
+                                    GSJSONObject *object = [[element.type.objectClass alloc] initWithDictionary:subDictionary];
+                                    [tempRowArray addObject:object];
+                                }
+                            }
+                            [tempArray addObject:tempRowArray];
                         }
-                        [tempArray addObject:tempRowArray];
                     }
                     return tempArray;
                 }
