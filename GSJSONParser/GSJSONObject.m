@@ -37,11 +37,15 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
              element.type.elementType == GSJSONElementTypeLong) {
         if ([value isKindOfClass:[NSNumber class]] ||
             [value isKindOfClass:[NSString class]]) return value;
-        else ATLogError(@"%@ is not a NSNumber",element.keyForJSON);
+        else {
+//            ATLogError(@"%@ is not a NSNumber",element.keyForJSON)
+        };
     }
     else if (element.type.elementType == GSJSONElementTypeString) {
         if ([value isKindOfClass:[NSString class]]) return value;
-        else ATLogError(@"%@ is not a NSString",element.keyForJSON);
+        else {
+//            ATLogError(@"%@ is not a NSString",element.keyForJSON);
+        }
     }
     else if (element.type.elementType == GSJSONElementTypeDate) {
         if ([value isKindOfClass:[NSString class]]) {
@@ -53,7 +57,9 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
             }
             return [dateFormatter dateFromString:value];
         }
-        else ATLogError(@"%@ is not a NSString",element.keyForJSON);
+        else {
+//            ATLogError(@"%@ is not a NSString",element.keyForJSON);
+        }
     }
     else if (element.type.elementType == GSJSONElementTypeArray) {
         if ([value isKindOfClass:[NSArray class]]) {
@@ -69,17 +75,21 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
                     }
                     return tempArray;
                 }
-                else ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                else {
+//                    ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                }
             }
             else return value;
         }
-        else ATLogError(@"%@ is not a NSArray",element.keyForJSON);
+        else {
+//            ATLogError(@"%@ is not a NSArray",element.keyForJSON);
+        }
     }
     else if (element.type.elementType == GSJSONElementTypeArrayArray) {
         if ([value isKindOfClass:[NSArray class]]) {
             if (element.type.objectClass) {
                 if ([[self class] isSubclassOfClass:element.type.objectClass]) {
-                    ATLogError(@"subclass %@",[self class]);
+//                    ATLogError(@"subclass %@",[self class]);
                 }
                 if ([element.type.objectClass isSubclassOfClass:[GSJSONObject class]]) {
                     NSArray <NSArray <NSDictionary *> *> *array = value;
@@ -98,11 +108,15 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
                     }
                     return tempArray;
                 }
-                else ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                else {
+//                    ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                }
             }
             else return value;
         }
-        else ATLogError(@"%@ is not a NSArray",element.keyForJSON);
+        else {
+//            ATLogError(@"%@ is not a NSArray",element.keyForJSON);
+        }
     }
     else if (element.type.elementType == GSJSONElementTypeDictionary) {
         if ([value isKindOfClass:[NSDictionary class]]) {
@@ -120,11 +134,15 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
                     }
                     return tempDictionary;
                 }
-                else ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                else {
+//                    ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                }
             }
             else return value;
         }
-        else ATLogError(@"%@ is not a NSDictionary",element.keyForJSON);
+        else {
+//            ATLogError(@"%@ is not a NSDictionary",element.keyForJSON);
+        }
     }
     else if (element.type.elementType == GSJSONElementTypeDictionaryArray) {
         if ([value isKindOfClass:[NSDictionary class]]) {
@@ -145,11 +163,15 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
                     }
                     return tempDictionary;
                 }
-                else ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                else {
+//                    ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                }
             }
             else return value;
         }
-        else ATLogError(@"%@ is not a NSDictionary",element.keyForJSON);
+        else {
+//            ATLogError(@"%@ is not a NSDictionary",element.keyForJSON);
+        }
     }
     else if (element.type.elementType == GSJSONElementTypeDictionaryDictionary) {
         if ([value isKindOfClass:[NSDictionary class]]) {
@@ -177,20 +199,24 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
                                 [subTempDictionary setObject:object forKey:subKey];
                             }
                             else {
-                                ATLogError(@"%@ is not a kind of class NSDictionary",subKey);
+//                                ATLogError(@"%@ is not a kind of class NSDictionary",subKey);
                             }
                         }
                         [tempDictionary setObject:subTempDictionary forKey:key];
                     }
                     else {
-                        ATLogError(@"%@ is not a kind of class NSDictionary",key);
+//                        ATLogError(@"%@ is not a kind of class NSDictionary",key);
                     }
                 }
                 return tempDictionary;
             }
-            else ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+            else {
+//                ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+            }
         }
-        else ATLogError(@"%@ is not a NSDictionary",element.keyForJSON);
+        else {
+//            ATLogError(@"%@ is not a NSDictionary",element.keyForJSON);
+        }
     }
     else if (element.type.elementType == GSJSONElementTypeObject) {
         if ([value isKindOfClass:[NSDictionary class]]) {
@@ -199,13 +225,18 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
                     GSJSONObject *object = [[element.type.objectClass alloc] initWithDictionary:value];
                     return object;
                 }
-                else ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                else {
+//                    ATLogError(@"%@ is not a kind of class GSJSONObject",element.type.objectClass);
+                }
             }
-            else ATLogError(@"element.type.objectClass Not Defined ");
+            else {
+//                ATLogError(@"element.type.objectClass Not Defined ");
+            }
         }
-        else ATLogError(@"%@ is not a NSDictionary",element.keyForJSON);
+        else {
+//            ATLogError(@"%@ is not a NSDictionary",element.keyForJSON);
+        }
     }
-    
     return nil;
 
 }
@@ -215,7 +246,7 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
     if (self) {
         NSArray <GSJSONElement *> *elementArray = [GSJSONObject elementArrayForClass:self];
         if ([elementArray count] == 0) {
-            ATLogWarning(@"Element Array not defined");
+//            ATLogWarning(@"Element Array not defined");
         }
         for (GSJSONElement *element in elementArray) {
             id value = [dictionary objectForKey:element.keyForJSON];
@@ -234,11 +265,11 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
             [self setValue:value forKey:key];
         }
         else {
-            ATLog(@"%@ key is Not Defined in %@", key, [self class]);
+//            ATLog(@"%@ key is Not Defined in %@", key, [self class]);
         }
     }
     else {
-        ATLog(@"the value is null %@ %@", key, [self class]);
+//        ATLog(@"the value is null %@ %@", key, [self class]);
     }
 }
 
@@ -248,7 +279,7 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
 //        [self setValue:value forKey:key];
     }
     else {
-        ATLog(@"%@ key is Not Defined in %@", key, [self class]);
+//        ATLog(@"%@ key is Not Defined in %@", key, [self class]);
     }
     return nil;
 }
@@ -261,7 +292,7 @@ static NSMutableDictionary<NSString *, NSMutableArray <GSJSONElement *> *> *tCla
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSArray <GSJSONElement *> *elementArray = [GSJSONObject elementArrayForClass:self];
     if ([elementArray count] == 0) {
-        ATLogWarning(@"Element Array not defined");
+//        ATLogWarning(@"Element Array not defined");
     }
     for (GSJSONElement *element in elementArray) {
         id value = [self getSafeValueForKey:element.keyForObject];
